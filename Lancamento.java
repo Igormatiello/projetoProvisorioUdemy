@@ -1,5 +1,8 @@
 package com.imatiello.minhasfinancas.model.entity;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -15,9 +18,20 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ManyToAny;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
+import com.imatiello.minhasfinancas.model.enums.StatusLancamento;
+import com.imatiello.minhasfinancas.model.enums.TipoLancamento;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name= "lancamento", schema = "financas")
-
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Lancamento {
 
 	@Id
@@ -50,7 +64,7 @@ public class Lancamento {
 	@Enumerated(value= EnumType.STRING)
 	private TipoLancamento tipo;
 	
-	@Column(name= "tipo")
+	@Column(name= "status")
 	@Enumerated(value= EnumType.STRING)
 	private StatusLancamento status;
 
